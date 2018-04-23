@@ -1,7 +1,6 @@
 # EventX-css-event
 * Allow programmer to listen for css style change event.
 * JQuery css style event.
-* More accuracy if JQuery is included (Ex: if you change border-color from black to #000000 it will not fire stylechange event if you include JQuery otherwise it will fire)
   
 # Table of content
 * [Installation](#install)
@@ -25,54 +24,114 @@
 npm install eventx-css-event
 ```
 
-## Why we need this ???
+## Why we need this library ???
 ### Problem statement
-I want to alert "Style ... changed from ... to ..." when some css style of #ex is changed.
+I want to **alert "Style ... changed from ... to ..."** when some css style of #ex is changed, **alert "Style ... added with value ..."** when some css style of #ex is added and **alert "Style ... removed with old value ..."** when some css style of #ex is removed (only consider inline style).
 
-### Before using this
+### Before using this library
 ```javascript
 const target = $("#ex");
 
 const ob = new MutationObserver(mutationsList => {
   for (var mutation of mutationsList) {
-    if (mutation.target == target) {
+    if (mutation.target == target[0]) {
       var curr = mutation.target.style;
-      var old = mutation.oldValue.split(';');
+      var currattr = mutation.target.getAttribute("style").replace(/\/\*(.|\n)*?\*\//g, "").split(';');
+      var old = mutation.oldValue ? mutation.oldValue.replace(/\/\*(.|\n)*?\*\//g, "").split(';') : [];
       var styleName = null;
       var oldStyleValue = null;
       var newStyleValue = null;
-      if (old[old.length - 1].trim() == "") old.pop();
-      for (var _style of old) {
-        var style = _style.split(':');
-        style[1] = style[1].trim();
-        if (curr[style[0]] != style[1]) {
-          styleName = style[0];
-          oldStyleValue = style[1];
-          newStyleValue = style[0];
-          break;
+      if (old.length > 0 && old[old.length - 1].trim() == "") old.pop();
+      if (currattr.length > 0 && currattr[currattr.length - 1].trim() == "") currattr.pop();
+
+      if (old.length == currattr.length) {
+        // style change
+        for (var _style of old) {
+          var style = _style.split(':');
+          style[0] = style[0].trim();
+          style[1] = style[1].trim();
+          if (curr[style[0]] != style[1]) {
+            styleName = style[0];
+            oldStyleValue = style[1];
+            newStyleValue = curr[style[0]];
+            break;
+          }
+        }
+      } else if (old.length < currattr.length) {
+        // add
+        var _old = {};
+        for (var _style of old) {
+          var style = _style.split(':');
+          style[0] = style[0].trim();
+          style[1] = style[1].trim();
+
+          _old[style[0]] = style[1];
+        }
+
+        for (var _style of currattr) {
+          var style = _style.split(':');
+          style[0] = style[0].trim();
+          style[1] = style[1].trim();
+          if (!_old[style[0]]) {
+            styleName = style[0];
+            oldStyleValue = "";
+            newStyleValue = curr[style[0]];
+            break;
+          }
+        }
+      } else {
+        // remove
+        var _curr = {};
+        for (var _style of currattr) {
+          var style = _style.split(':');
+          style[0] = style[0].trim();
+          style[1] = style[1].trim();
+
+          _curr[style[0]] = style[1];
+        }
+
+        for (var _style of old) {
+          var style = _style.split(':');
+          style[0] = style[0].trim();
+          style[1] = style[1].trim();
+          if (!_curr[style[0]]) {
+            styleName = style[0];
+            oldStyleValue = style[1];
+            newStyleValue = "";
+            break;
+          }
         }
       }
 ```
 ```javascript
-      if (styleName) alert("Style "+styleName+" changed from "+oldStyleValue+" to "+newStyleValue);
+      if (styleName) {
+        if (oldStyleValue && newStyleValue) alert("Style "+styleName+" changed from "+oldStyleValue+" to "+newStyleValue);
+        else if (!oldStyleValue && newStyleValue) alert("Style "+styleName+" added with value "+newStyleValue);
+        else if (oldStyleValue && !newStyleValue) alert("Style "+styleName+" removed with old value "+oldStyleValue);
+      }
 ```
 ```javascript
     }
   }
 });
 
-ob.observe(target[0]);
+var config = { attributes: true, attributeOldValue: true, attributeFilter: ["style"]};
+ob.observe(target[0],config);
 ```
 **Note:** Above example require JQuery
 
-[View and play in JSFiddle](https://jsfiddle.net/Chomtana/fLe166sL/)
+[View and play in JSFiddle](https://jsfiddle.net/Chomtana/30d2wctj/)
 
-### After using this
+### After using this library
 ```javascript
-$("#ex").on("csschange",function(e) {
+$("#ex").on("inlinestylechange",function(e) {
 ```
 ```javascript
-  alert("Style "+e.styleName+" changed from "+e.oldStyleValue+" to "+e.newStyleValue);
+  if (styleName) {
+    if (e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" changed from "+e.oldStyleValue+" to "+e.newStyleValue);
+    else if (!e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" added with value "+e.newStyleValue);
+    else if (e.oldStyleValue && !e.newStyleValue) alert("Style "+e.styleName+" removed with old value "+e.oldStyleValue);
+  }
 ```
 ```javascript
 });
@@ -88,10 +147,14 @@ $("#ex").on("csschange",function(e) {
 
 ### Without JQuery
 ```javascript
-evx.on(document.getElementById("ex"),"resize",function(e) {
+evx.on(document.getElementById("ex"),"inlinestylechange",function(e) {
 ```
 ```javascript
-  if ($(this).width() < 50 || $(this).height() < 50) alert("Too small");
+  if (styleName) {
+    if (e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" changed from "+e.oldStyleValue+" to "+e.newStyleValue);
+    else if (!e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" added with value "+e.newStyleValue);
+    else if (e.oldStyleValue && !e.newStyleValue) alert("Style "+e.styleName+" removed with old value "+e.oldStyleValue);
+  }
 ```
 ```javascript
 });
@@ -107,10 +170,10 @@ Yeah, still simple and easy.
 ## Features
 ### On
 ```javascript
-$("#ex").on("resize",function(e) { console.log(e,this); ... });
+$("#ex").on("inlinestylechange",function(e) { console.log(e,this); ... });
 ```
 ```javascript
-evx.on(<target HTMLElement>,"resize",function(e) { console.log(e,this); ... });
+evx.on(<target HTMLElement>,"inlinestylechange",function(e) { console.log(e,this); ... });
 ```
 * View all JQuery coding style at http://api.jquery.com/on/
 * e is a ResizeObserverEntry object
@@ -119,16 +182,19 @@ evx.on(<target HTMLElement>,"resize",function(e) { console.log(e,this); ... });
 
 ### Off
 ```javascript
-$("#ex").off("resize");
+$("#ex").off("inlinestylechange");
 ```
 ```javascript
-evx.off(<target HTMLElement>,"resize",[handler (Optional)])
+evx.off(<target HTMLElement>,"inlinestylechange",[handler (Optional)])
 ```
 * View all JQuery coding style at http://api.jquery.com/off/
 
 ### Rename Event (Solve event name conflict)
 ```javascript
-evx.renameEvent("resize","<newname>")
+evx.renameEvent("inlinestylechange","<newname>")
+```
+```javascript
+evx.renameEvent("stylechange","<newname>")
 ```
 
 ### Create new event type
