@@ -1,6 +1,7 @@
 # EventX-css-event
 * Allow programmer to listen for css style change event.
 * JQuery css style event.
+* More accuracy if JQuery is included (Ex: if you change border-color from black to #000000 it will not fire stylechange event if you include JQuery otherwise it will fire)
   
 # Table of content
 * [Installation](#install)
@@ -26,25 +27,41 @@ npm install eventx-css-event
 
 ## Why we need this ???
 ### Problem statement
-I want to alert "Background is red" when background-color of #ex is red.
+I want to alert "Style ... changed from ... to ..." when some css style of #ex is changed.
 
 ### Before using this
 ```javascript
 const target = $("#ex");
 
-const ro = new ResizeObserver(entries => {
-  for(let entry of entries) {
-    if (entry.target == target[0]) {
+const ob = new MutationObserver(mutationsList => {
+  for (var mutation of mutationsList) {
+    if (mutation.target == target) {
+      var curr = mutation.target.style;
+      var old = mutation.oldValue.split(';');
+      var styleName = null;
+      var oldStyleValue = null;
+      var newStyleValue = null;
+      if (old[old.length - 1].trim() == "") old.pop();
+      for (var _style of old) {
+        var style = _style.split(':');
+        style[1] = style[1].trim();
+        if (curr[style[0]] != style[1]) {
+          styleName = style[0];
+          oldStyleValue = style[1];
+          newStyleValue = style[0];
+          break;
+        }
+      }
 ```
 ```javascript
-      if (target.width() < 50 || target.height() < 50) alert("Too small");
+      if (styleName) alert("Style "+styleName+" changed from "+oldStyleValue+" to "+newStyleValue);
 ```
 ```javascript
     }
   }
 });
 
-ro.observe(target[0]);
+ob.observe(target[0]);
 ```
 **Note:** Above example require JQuery
 
@@ -52,10 +69,10 @@ ro.observe(target[0]);
 
 ### After using this
 ```javascript
-$("#ex").on("resize",function(e) {
+$("#ex").on("csschange",function(e) {
 ```
 ```javascript
-  if ($(this).width() < 50 || $(this).height() < 50) alert("Too small");
+  alert("Style "+e.styleName+" changed from "+e.oldStyleValue+" to "+e.newStyleValue);
 ```
 ```javascript
 });
