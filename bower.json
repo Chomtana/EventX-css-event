@@ -1,0 +1,28 @@
+{
+  "name": "eventx-resizeobserver-event",
+  "description": "EventX ResizeObserver event make it easy to use resize event in JQuery",
+  "main": "dist/eventx-resize.js",
+  "authors": [
+    "Chomtana"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "eventx",
+    "ResizeObserver",
+    "resize",
+    "event",
+    "observer",
+    "jquery"
+  ],
+  "homepage": "https://github.com/Chomtana/EventX-core",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "eventx-core": "*"
+  }
+}
