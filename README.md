@@ -7,8 +7,7 @@
 * [Events](#events)
 * [Why we need this ???](#why-we-need-this-library-)
 * [Examples](#examples)
-  * [For Getting started](https://jsfiddle.net/Chomtana/zyjy6xsk/)
-  * [High detail (Show both **on** and **off**)](https://jsfiddle.net/Chomtana/o3roqcc0/)
+  * [inlinestylechange event](https://jsfiddle.net/Chomtana/gt6mmpdj/)
 * [Features](#features)
   * [On](#on)
   * [Off](#off)
@@ -30,7 +29,7 @@ npm install eventx-css-event
 | ------------- | ------------- | ------------- | ------------- |
 | `stylechange`  | No  | Listen to inline style change  (In future will be able to listen to media style change) | Click |
 | `stylechange:<...>`  | No  | Listen to inline style (Only style <...>) change (In future will be able to listen to media style change) | Click |
-| `inlinestylechange`  | No  | Listen to inline style change | Click |
+| `inlinestylechange`  | No  | Listen to inline style change | [Click](https://jsfiddle.net/Chomtana/gt6mmpdj/) |
 | `inlinestylechange:<...>`  | No  | Listen to inline style (Only style <...>) change | Click |
 
 ## Why we need this library ???
@@ -145,7 +144,7 @@ $("#ex").on("inlinestylechange",function(e) {
 ```
 **Note:** Above example require JQuery
 
-[View and play in JSFiddle](https://jsfiddle.net/Chomtana/zyjy6xsk/)
+[View and play in JSFiddle](https://jsfiddle.net/Chomtana/gt6mmpdj/)
 
 ### Difference
 * First and final block obviously shorter.
@@ -166,11 +165,8 @@ evx.on(document.getElementById("ex"),"inlinestylechange",function(e) {
 ```
 Yeah, still simple and easy.
 
-**More detail about this library in this [example](https://jsfiddle.net/Chomtana/o3roqcc0/)**
-
 ## Examples
-* [For Getting started](https://jsfiddle.net/Chomtana/zyjy6xsk/)
-* [High detail (Show both **on** and **off**)](https://jsfiddle.net/Chomtana/o3roqcc0/)
+* [inlinestylechange event](https://jsfiddle.net/Chomtana/gt6mmpdj/)
 
 ## Features
 **[You can find list of event name here](#events)**
