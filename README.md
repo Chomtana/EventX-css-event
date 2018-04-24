@@ -136,11 +136,9 @@ ob.observe(target[0],config);
 $("#ex").on("inlinestylechange",function(e) {
 ```
 ```javascript
-  if (styleName) {
-    if (e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" changed from "+e.oldStyleValue+" to "+e.newStyleValue);
-    else if (!e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" added with value "+e.newStyleValue);
-    else if (e.oldStyleValue && !e.newStyleValue) alert("Style "+e.styleName+" removed with old value "+e.oldStyleValue);
-  }
+  if (e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" changed from "+e.oldStyleValue+" to "+e.newStyleValue);
+  else if (!e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" added with value "+e.newStyleValue);
+  else if (e.oldStyleValue && !e.newStyleValue) alert("Style "+e.styleName+" removed with old value "+e.oldStyleValue);
 ```
 ```javascript
 });
@@ -159,11 +157,9 @@ $("#ex").on("inlinestylechange",function(e) {
 evx.on(document.getElementById("ex"),"inlinestylechange",function(e) {
 ```
 ```javascript
-  if (styleName) {
-    if (e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" changed from "+e.oldStyleValue+" to "+e.newStyleValue);
-    else if (!e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" added with value "+e.newStyleValue);
-    else if (e.oldStyleValue && !e.newStyleValue) alert("Style "+e.styleName+" removed with old value "+e.oldStyleValue);
-  }
+  if (e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" changed from "+e.oldStyleValue+" to "+e.newStyleValue);
+  else if (!e.oldStyleValue && e.newStyleValue) alert("Style "+e.styleName+" added with value "+e.newStyleValue);
+  else if (e.oldStyleValue && !e.newStyleValue) alert("Style "+e.styleName+" removed with old value "+e.oldStyleValue);
 ```
 ```javascript
 });
