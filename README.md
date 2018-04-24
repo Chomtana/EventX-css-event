@@ -8,6 +8,7 @@
 * [Why we need this ???](#why-we-need-this-library-)
 * [Examples](#examples)
   * [inlinestylechange event](https://jsfiddle.net/Chomtana/gt6mmpdj/)
+  * [inlinestylechange:<...> event](https://jsfiddle.net/Chomtana/3m3frtc4/)
 * [Features](#features)
   * [On](#on)
   * [Off](#off)
@@ -30,7 +31,7 @@ npm install eventx-css-event
 | `stylechange`  | No  | Listen to inline style change  (In future will be able to listen to media style change) | Click |
 | `stylechange:<...>`  | No  | Listen to inline style (Only style <...>) change (In future will be able to listen to media style change) | Click |
 | `inlinestylechange`  | No  | Listen to inline style change | [Click](https://jsfiddle.net/Chomtana/gt6mmpdj/) |
-| `inlinestylechange:<...>`  | No  | Listen to inline style (Only style <...>) change | Click |
+| `inlinestylechange:<...>`  | No  | Listen to inline style (Only style <...>) change | [Click](https://jsfiddle.net/Chomtana/3m3frtc4/) |
 
 ## Why we need this library ???
 ### Problem statement
@@ -167,6 +168,7 @@ Yeah, still simple and easy.
 
 ## Examples
 * [inlinestylechange event](https://jsfiddle.net/Chomtana/gt6mmpdj/)
+* [inlinestylechange:<...> event](https://jsfiddle.net/Chomtana/3m3frtc4/)
 
 ## Features
 **[You can find list of event name here](#events)**
