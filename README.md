@@ -7,6 +7,8 @@
 * [Events](#events)
 * [Why we need this ???](#why-we-need-this-library-)
 * [Examples](#examples)
+  * [stylechange event](https://jsfiddle.net/Chomtana/f9wbnjye/)
+  * [stylechange:<...> event](https://jsfiddle.net/Chomtana/hezvk3LL/)
   * [inlinestylechange event](https://jsfiddle.net/Chomtana/gt6mmpdj/)
   * [inlinestylechange:<...> event](https://jsfiddle.net/Chomtana/3m3frtc4/)
 * [Features](#features)
@@ -17,7 +19,7 @@
 ## Install
 ### Browser
 ```html
-<script src="..."></script>
+<script src="https://cdn.rawgit.com/Chomtana/EventX-css-event/f96312db/dist/eventx-css.js"></script>
 ```
 
 ### NPM
@@ -167,6 +169,8 @@ evx.on(document.getElementById("ex"),"inlinestylechange",function(e) {
 Yeah, still simple and easy.
 
 ## Examples
+* [stylechange event](https://jsfiddle.net/Chomtana/f9wbnjye/)
+* [stylechange:<...> event](https://jsfiddle.net/Chomtana/hezvk3LL/)
 * [inlinestylechange event](https://jsfiddle.net/Chomtana/gt6mmpdj/)
 * [inlinestylechange:<...> event](https://jsfiddle.net/Chomtana/3m3frtc4/)
 
