@@ -4,7 +4,8 @@
   
 # Table of content
 * [Installation](#install)
-* [Why we need this ???](#why-we-need-this-)
+* [Events](#events)
+* [Why we need this ???](#why-we-need-this-library-)
 * [Examples](#examples)
   * [For Getting started](https://jsfiddle.net/Chomtana/zyjy6xsk/)
   * [High detail (Show both **on** and **off**)](https://jsfiddle.net/Chomtana/o3roqcc0/)
@@ -23,6 +24,14 @@
 ```
 npm install eventx-css-event
 ```
+
+## Events
+| Name  | Stable | Description | Example |
+| ------------- | ------------- | ------------- | ------------- |
+| `stylechange`  | No  | Listen to inline style change  (In future will be able to listen to media style change) | Click |
+| `stylechange:<...>`  | No  | Listen to inline style (Only style <...>) change (In future will be able to listen to media style change) | Click |
+| `inlinestylechange`  | No  | Listen to inline style change | Click |
+| `inlinestylechange:<...>`  | No  | Listen to inline style (Only style <...>) change | Click |
 
 ## Why we need this library ???
 ### Problem statement
@@ -168,12 +177,13 @@ Yeah, still simple and easy.
 * [High detail (Show both **on** and **off**)](https://jsfiddle.net/Chomtana/o3roqcc0/)
 
 ## Features
+**[You can find list of event name here](#events)**
 ### On
 ```javascript
-$("#ex").on("inlinestylechange",function(e) { console.log(e,this); ... });
+$("#ex").on("<event name>",function(e) { console.log(e,this); ... });
 ```
 ```javascript
-evx.on(<target HTMLElement>,"inlinestylechange",function(e) { console.log(e,this); ... });
+evx.on(<target HTMLElement>,"<event name>",function(e) { console.log(e,this); ... });
 ```
 * View all JQuery coding style at http://api.jquery.com/on/
 * e is a ResizeObserverEntry object
@@ -182,19 +192,16 @@ evx.on(<target HTMLElement>,"inlinestylechange",function(e) { console.log(e,this
 
 ### Off
 ```javascript
-$("#ex").off("inlinestylechange");
+$("#ex").off("<event name>");
 ```
 ```javascript
-evx.off(<target HTMLElement>,"inlinestylechange",[handler (Optional)])
+evx.off(<target HTMLElement>,"<event name>",[handler (Optional)])
 ```
 * View all JQuery coding style at http://api.jquery.com/off/
 
 ### Rename Event (Solve event name conflict)
 ```javascript
-evx.renameEvent("inlinestylechange","<newname>")
-```
-```javascript
-evx.renameEvent("stylechange","<newname>")
+evx.renameEvent("<event name>","<newname>")
 ```
 
 ### Create new event type
