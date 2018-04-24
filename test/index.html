@@ -20,7 +20,7 @@
             evx.off(document.getElementById("aaa"), "resize", e => console.log(e));
         }, 5000);*/
         
-        $("#aaa").on("csschange",function(e) { console.log(e,this); });
+        $("#aaa").on("stylechange",function(e) { console.log(e,this); });
 
     </script>
 </body>
