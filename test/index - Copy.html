@@ -43,7 +43,7 @@
             console.log("off");
             evx.off(document.getElementById("aaa"), "resize", e => console.log(e));
         }, 5000);*/
-
+        
         $(window).on('resize',function() {
             if ($(window).width()==800) {
                 $("#aaa").height(400);
@@ -51,7 +51,7 @@
         });
 
         $("#aaa").on("stylechange",function(e) { console.log(e,this); });
-        //$("#aaa").on("mediastylechange:height",function(e){console.log(e,this);});
+        $("#aaa").on("mediastylechange",function(e){console.log(e,this);});
 
     </script>
 </body>

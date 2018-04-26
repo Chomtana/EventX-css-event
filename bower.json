@@ -1,20 +1,24 @@
 {
-  "name": "eventx-resizeobserver-event",
-  "description": "EventX ResizeObserver event make it easy to use resize event in JQuery",
-  "main": "dist/eventx-resize.js",
+  "name": "eventx-css-eventt",
+  "description": "Allow programmer to listen for css style change event (You can also use JQuery to listen for css style change event).",
+  "main": "dist/eventx-css.min.js",
   "authors": [
     "Chomtana"
   ],
   "license": "MIT",
   "keywords": [
     "eventx",
-    "ResizeObserver",
-    "resize",
+    "eventx-css",
+    "css-event",
+    "style-event",
     "event",
-    "observer",
+    "css",
+    "style",
+    "media-event",
+    "media-style-event",
     "jquery"
   ],
-  "homepage": "https://github.com/Chomtana/EventX-core",
+  "homepage": "https://github.com/Chomtana/EventX-css-event",
   "ignore": [
     "**/.*",
     "node_modules",
