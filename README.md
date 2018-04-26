@@ -28,12 +28,14 @@ npm install eventx-css-event
 ```
 
 ## Events
-| Name  | Stable | Description | Example |
-| ------------- | ------------- | ------------- | ------------- |
-| `stylechange`  | No  | Listen to inline style change  (In future will be able to listen to media style change) | Click |
-| `stylechange:<...>`  | No  | Listen to inline style (Only style <...>) change (In future will be able to listen to media style change) | Click |
-| `inlinestylechange`  | No  | Listen to inline style change | [Click](https://jsfiddle.net/Chomtana/gt6mmpdj/) |
-| `inlinestylechange:<...>`  | No  | Listen to inline style (Only style <...>) change | [Click](https://jsfiddle.net/Chomtana/3m3frtc4/) |
+| Name | Description | Example |
+| ------------- | ------------- | ------------- |
+| `stylechange` | Listen to inline and media screen style change | [Click](https://jsfiddle.net/Chomtana/f9wbnjye/) |
+| `stylechange:<...>`  | Listen to inline style change (Only style <...>) (In future will be able to listen to media style change) | [Click](https://jsfiddle.net/Chomtana/hezvk3LL/) |
+| `inlinestylechange`  | Listen to inline style change | [Click](https://jsfiddle.net/Chomtana/gt6mmpdj/) |
+| `inlinestylechange:<...>`  | Listen to inline style change (Only style <...>) | [Click](https://jsfiddle.net/Chomtana/3m3frtc4/) |
+| `mediastylechange`  | Listen to media style change | |
+| `mediastylechange:<...>`  | Listen to media style change (Only style <...>) | |
 
 ## Why we need this library ???
 ### Problem statement
