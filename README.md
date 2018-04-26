@@ -186,9 +186,9 @@ $("#ex").on("<event name>",function(e) { console.log(e,this); ... });
 evx.on(<target HTMLElement>,"<event name>",function(e) { console.log(e,this); ... });
 ```
 * View all JQuery coding style at http://api.jquery.com/on/
-* e is a ResizeObserverEntry object
+* e is a Edited MutationRecord object
 * this = target element **(Warning: not working if you use arrow function)**
-* For more information about **ResizeObserverEntry** run console.log(e) in event handler or read [document](https://wicg.github.io/ResizeObserver/#resize-observer-entry-interface)
+* For more information about **Edited MutationRecord** run console.log(e) in event handler or read [here](#edited-mutationrecord)
 
 ### Off
 ```javascript
@@ -209,3 +209,12 @@ evx.renameEvent("<event name>","<newname>")
 
 ### Remove event type
 [Read at EventX-core](https://github.com/Chomtana/EventX-core)
+
+## Edited MutationRecord
+| Property Name | Type | Description |
+| ------------- | ---- | ----------- |
+| target | HTMLElement | Target element which style has been changed |
+| styleName | String | Name of style that has been changed |
+| oldStyleValue | String | Value of that style before changed |
+| newStyleValue | String | Value of that style after changed |
+| changetype | String | "inline" if inline change or "media" if media change |
