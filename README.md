@@ -1,4 +1,5 @@
 # EventX-css-event
+[![Build Status](https://travis-ci.org/Chomtana/EventX-css-event.svg?branch=master)](https://travis-ci.org/Chomtana/EventX-css-event)
 * Allow programmer to listen for css style change event.
 * JQuery css style event.
   
@@ -218,3 +219,7 @@ evx.renameEvent("<event name>","<newname>")
 | oldStyleValue | String | Value of that style before changed |
 | newStyleValue | String | Value of that style after changed |
 | changetype | String | "inline" if inline change or "media" if media change |
+
+## License
+Released under the [MIT License](https://github.com/Chomtana/EventX-css-event/blob/master/LICENSE)
+Copyright © 2018 Chomtana
