@@ -1,6 +1,6 @@
 {
   "name": "eventx-css-event",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Allow programmer to listen for css style change event (You can also use JQuery to listen for css style change event).",
   "main": "lib/css.js",
   "scripts": {
