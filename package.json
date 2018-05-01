@@ -4,30 +4,23 @@
   "description": "Allow programmer to listen for css style change event (You can also use JQuery to listen for css style change event).",
   "main": "lib/css.js",
   "scripts": {
-    "test": "webpack --config ./webpack.prod.js && babel src -d lib",
-    "build": "webpack && babel src -d lib"
+    "test": "webpack && babel src -d lib",
+    "build": "webpack --config ./webpack.prod.js && babel src -d lib"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Chomtana/EventX-ResizeObserver-event"
+    "url": "https://github.com/Chomtana/EventX-css-event"
   },
   "keywords": [
     "eventx",
-    "ResizeObserver",
-    "resize-observer",
-    "resize-events",
-    "resize-DOM",
-    "resize-element",
-    "resize-html",
-    "resize-htmlelement",
-    "resize",
+    "css",
+    "css-change",
+    "css-events",
+    "style",
+    "style-events",
+    "style-change",
     "event",
-    "observer",
-    "jquery",
-    "DOM",
-    "HTML",
-    "HTMLElement",
-    "element"
+    "jquery"
   ],
   "author": "Chomtana",
   "license": "MIT",
